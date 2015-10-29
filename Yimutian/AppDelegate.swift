@@ -14,8 +14,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    func p_nav_init(vc: UIViewController, index: NSInteger) -> UINavigationController {
+        let nav = UINavigationController(rootViewController: vc)
+        
+        switch index {
+        case 0:
+            vc.title = "首页";
+            vc.navigationItem.title = "一亩田"
+        case 1:
+            vc.title = "商机";
+            vc.navigationItem.title = "商机"
+        case 2:
+            vc.title = "消息";
+            vc.navigationItem.title = "消息"
+        case 3:
+            vc.title = "发布";
+            vc.navigationItem.title = "发布"
+        case 4:
+            vc.title = "个人";
+            vc.navigationItem.title = "个人"
+        default:
+            vc.title = "一亩田";
+            vc.navigationItem.title = "一亩田"
+        }
+        
+        return nav
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: SCREEN_BOUNDS)
+        window?.makeKeyAndVisible()
+
+        let homeVC = HomeViewController()
+        let findVC = FindViewController()
+        let msgVC = MsgViewController()
+        let publishVC = PublishViewController()
+        let mineVC = MineViewController()
+        
+        let tabVC = UITabBarController()
+        tabVC.viewControllers = [p_nav_init(homeVC,index: 0),p_nav_init(findVC,index: 1),p_nav_init(msgVC,index: 2),p_nav_init(publishVC,index: 3),p_nav_init(mineVC,index: 4)]
+        
+        
+        window?.rootViewController = tabVC
+        
         return true
     }
 
