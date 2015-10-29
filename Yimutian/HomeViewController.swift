@@ -11,6 +11,8 @@ import UIKit
 class HomeViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
 
     let cellIdentifier = "cellIdentifier"
+    let headerIdentifier = "headerIdentifier"
+    let footerIdentifier = "footerIdentifier"
     
     var searchBtn: UIBarButtonItem!
     var collectionView: UICollectionView!
@@ -29,6 +31,8 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.whiteColor()
         collectionView.registerClass(HomeIconCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.registerClass(HomeIconHeaderCollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.registerClass(HomeIconFooterCollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerIdentifier)
         
         self.view.addSubview(collectionView)
     }
@@ -83,6 +87,19 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerIdentifier, forIndexPath: indexPath)
+            return header
+        case UICollectionElementKindSectionFooter:
+            let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: footerIdentifier, forIndexPath: indexPath)
+            return footer
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
     //MARK: UICollectionViewDelegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -93,6 +110,24 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(collectionView.bounds.size.width, 44)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        var headerHeight: CGFloat = 0
+        if section==0 {
+            headerHeight = 150
+        }
+        
+        return CGSizeMake(collectionView.bounds.size.width, headerHeight)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        var footerHeight: CGFloat = 0
+        if section==2 {
+            footerHeight = 150
+        }
+        
+        return CGSizeMake(collectionView.bounds.width, footerHeight)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {

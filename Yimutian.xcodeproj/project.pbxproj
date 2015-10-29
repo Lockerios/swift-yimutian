@@ -20,6 +20,8 @@
 		A61503AF1BE217C900777F6F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61503AE1BE217C900777F6F /* MineViewController.swift */; };
 		A61503B11BE2189300777F6F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61503B01BE2189300777F6F /* BaseViewController.swift */; };
 		A63295E01BE26868006D6282 /* HomeIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295DF1BE26868006D6282 /* HomeIconCollectionViewCell.swift */; };
+		A63295E21BE26E69006D6282 /* HomeIconHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295E11BE26E69006D6282 /* HomeIconHeaderCollectionReusableView.swift */; };
+		A63295E41BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295E31BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		A61503AE1BE217C900777F6F /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		A61503B01BE2189300777F6F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A63295DF1BE26868006D6282 /* HomeIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIconCollectionViewCell.swift; sourceTree = "<group>"; };
+		A63295E11BE26E69006D6282 /* HomeIconHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIconHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		A63295E31BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIconFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				A63295DF1BE26868006D6282 /* HomeIconCollectionViewCell.swift */,
+				A63295E11BE26E69006D6282 /* HomeIconHeaderCollectionReusableView.swift */,
+				A63295E31BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -187,10 +193,12 @@
 				A61503A91BE217AB00777F6F /* FindViewController.swift in Sources */,
 				A63295E01BE26868006D6282 /* HomeIconCollectionViewCell.swift in Sources */,
 				A615036F1BE1F76300777F6F /* HomeViewController.swift in Sources */,
+				A63295E41BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift in Sources */,
 				A61503AF1BE217C900777F6F /* MineViewController.swift in Sources */,
 				A615036D1BE1F76300777F6F /* AppDelegate.swift in Sources */,
 				A61503B11BE2189300777F6F /* BaseViewController.swift in Sources */,
 				A61503A71BE2162600777F6F /* SearchViewController.swift in Sources */,
+				A63295E21BE26E69006D6282 /* HomeIconHeaderCollectionReusableView.swift in Sources */,
 				A61503AD1BE217BF00777F6F /* PublishViewController.swift in Sources */,
 				A61503831BE1F83000777F6F /* Constant.swift in Sources */,
 			);
