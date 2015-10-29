@@ -28,7 +28,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.whiteColor()
-        collectionView.registerClass(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.registerClass(HomeIconCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: cellIdentifier)
         
         self.view.addSubview(collectionView)
     }
@@ -65,11 +65,11 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! HomeIconCollectionViewCell
         
         switch indexPath.section {
         case 0:
-            cell.backgroundColor = UIColor.yellowColor()
+            cell.backgroundColor = UIColor.blueColor()
         case 1:
             cell.backgroundColor = UIColor.grayColor()
         case 2:
@@ -78,6 +78,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
             cell.backgroundColor = UIColor.blackColor()
         }
         
+        cell.iconLabel.text = "\(indexPath.section)"+"-"+"\(indexPath.row)"
         
         return cell
     }
@@ -92,6 +93,14 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(collectionView.bounds.size.width, 44)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(10, 0, 10, 0)
     }
 }
 

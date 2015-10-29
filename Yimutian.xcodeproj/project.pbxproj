@@ -19,6 +19,7 @@
 		A61503AD1BE217BF00777F6F /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61503AC1BE217BF00777F6F /* PublishViewController.swift */; };
 		A61503AF1BE217C900777F6F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61503AE1BE217C900777F6F /* MineViewController.swift */; };
 		A61503B11BE2189300777F6F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61503B01BE2189300777F6F /* BaseViewController.swift */; };
+		A63295E01BE26868006D6282 /* HomeIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295DF1BE26868006D6282 /* HomeIconCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A61503AC1BE217BF00777F6F /* PublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
 		A61503AE1BE217C900777F6F /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		A61503B01BE2189300777F6F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A63295DF1BE26868006D6282 /* HomeIconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIconCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		A61503811BE1F79000777F6F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A63295DF1BE26868006D6282 /* HomeIconCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			files = (
 				A61503AB1BE217B500777F6F /* MsgViewController.swift in Sources */,
 				A61503A91BE217AB00777F6F /* FindViewController.swift in Sources */,
+				A63295E01BE26868006D6282 /* HomeIconCollectionViewCell.swift in Sources */,
 				A615036F1BE1F76300777F6F /* HomeViewController.swift in Sources */,
 				A61503AF1BE217C900777F6F /* MineViewController.swift in Sources */,
 				A615036D1BE1F76300777F6F /* AppDelegate.swift in Sources */,
@@ -336,6 +340,7 @@
 				A615037D1BE1F76300777F6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
