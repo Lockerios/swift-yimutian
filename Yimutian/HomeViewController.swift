@@ -62,11 +62,22 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     //MARK: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        switch section {
+        case 0:
+            return 9
+        case 1:
+            return 6
+        case 2:
+            return 5
+        case 3:
+            return 4
+        default:
+            return 0
+        }
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -79,6 +90,8 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
             cell.backgroundColor = UIColor.grayColor()
         case 2:
             cell.backgroundColor = UIColor.purpleColor()
+        case 3:
+            cell.backgroundColor = UIColor.greenColor()
         default:
             cell.backgroundColor = UIColor.blackColor()
         }
@@ -116,7 +129,18 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     //MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(collectionView.bounds.size.width, 44)
+        switch indexPath.section {
+        case 0:
+            return CGSizeMake(collectionView.bounds.size.width/3-20, 44)
+        case 1:
+            return CGSizeMake(collectionView.bounds.size.width/2-20, 44)
+        case 2:
+            return CGSizeMake(collectionView.bounds.size.width, 44)
+        case 3:
+            return CGSizeMake(collectionView.bounds.size.width/2-20, 100)
+        default:
+            return CGSizeMake(collectionView.bounds.size.width, 44)
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -130,7 +154,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         var footerHeight: CGFloat = 0
-        if section==2 {
+        if section==3 {
             footerHeight = 150
         }
         
