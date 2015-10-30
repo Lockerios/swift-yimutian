@@ -14,6 +14,16 @@ extension String {
     }
 }
 
+extension String {
+    
+    func stringByAppendingPathComponent(path: String) -> String {
+        
+        let nsSt = self as NSString
+        
+        return nsSt.stringByAppendingPathComponent(path)
+    }
+}
+
 //MARK: Screen
 
 let SCREEN_BOUNDS = UIScreen.mainScreen().bounds
@@ -51,7 +61,7 @@ dLog("Log this!")
 
 #if DEBUG
     func dLog(@autoclosure message:  () -> String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__) {
-        NSLog("[\(filename.lastPathComponent):\(line)] \(function) - %@", message())
+        NSLog("[\(filename.stringByAppendingPathComponent):\(line)] \(function) - %@", message())
     }
 #else
     func dLog(@autoclosure message:  () -> String, filename: String = __FILE__, function: String = __FUNCTION__, line: Int = __LINE__) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
+class HomeViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 
     let cellIdentifier = "cellIdentifier"
     let headerIdentifier = "headerIdentifier"
@@ -16,6 +16,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     var searchBtn: UIBarButtonItem!
     var collectionView: UICollectionView!
+    var headerView: HomeIconHeaderCollectionReusableView!
     
     //MARK: - Lifecycle
     
@@ -90,8 +91,14 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerIdentifier, forIndexPath: indexPath)
-            return header
+            if (headerView != nil) {
+                return headerView
+            }
+            
+            headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerIdentifier, forIndexPath: indexPath) as! HomeIconHeaderCollectionReusableView
+            headerView.scrollView.delegate = self
+            
+            return headerView
         case UICollectionElementKindSectionFooter:
             let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: footerIdentifier, forIndexPath: indexPath)
             return footer
@@ -136,6 +143,14 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 0, 10, 0)
+    }
+    
+    //MARK: UIScrollViewDelegate
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if headerView != nil {
+            headerView.pageControl.currentPage = Int(headerView.scrollView.contentOffset.x/headerView.scrollView.frame.size.width)
+        }
     }
 }
 
