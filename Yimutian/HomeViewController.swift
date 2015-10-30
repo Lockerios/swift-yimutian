@@ -16,6 +16,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     var searchBtn: UIBarButtonItem!
     var collectionView: UICollectionView!
+    var refreshControl: UIRefreshControl!
     var headerView: HomeIconHeaderCollectionReusableView!
     
     //MARK: - Lifecycle
@@ -36,6 +37,11 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.registerClass(HomeIconFooterCollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerIdentifier)
         
         self.view.addSubview(collectionView)
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "p_refresh", forControlEvents: UIControlEvents.ValueChanged)
+        collectionView.addSubview(refreshControl)
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,6 +61,14 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         searchVC.hidesBottomBarWhenPushed = true
         
         self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
+    func p_refresh() {
+        self.performSelector(Selector("p_loadData"), withObject: nil, afterDelay: 1.5)
+    }
+    
+    func p_loadData() {
+        refreshControl.endRefreshing()
     }
 
     //MARK: - Actions
