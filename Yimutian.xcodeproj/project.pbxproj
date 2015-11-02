@@ -24,6 +24,7 @@
 		A63295E41BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295E31BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift */; };
 		A63295E61BE70992006D6282 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295E51BE70992006D6282 /* SettingTableViewCell.swift */; };
 		A63295EA1BE70A9E006D6282 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A63295E91BE70A9E006D6282 /* 1.jpg */; };
+		A63295EC1BE75A9C006D6282 /* YMTApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63295EB1BE75A9C006D6282 /* YMTApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		A63295E31BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeIconFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		A63295E51BE70992006D6282 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		A63295E91BE70A9E006D6282 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		A63295EB1BE75A9C006D6282 /* YMTApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMTApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				A61503821BE1F83000777F6F /* Constant.swift */,
+				A63295EB1BE75A9C006D6282 /* YMTApi.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				A63295E01BE26868006D6282 /* HomeIconCollectionViewCell.swift in Sources */,
 				A615036F1BE1F76300777F6F /* HomeViewController.swift in Sources */,
 				A63295E41BE2714F006D6282 /* HomeIconFooterCollectionReusableView.swift in Sources */,
+				A63295EC1BE75A9C006D6282 /* YMTApi.swift in Sources */,
 				A61503AF1BE217C900777F6F /* MineViewController.swift in Sources */,
 				A615036D1BE1F76300777F6F /* AppDelegate.swift in Sources */,
 				A61503B11BE2189300777F6F /* BaseViewController.swift in Sources */,
