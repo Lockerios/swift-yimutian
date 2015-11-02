@@ -32,9 +32,9 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.whiteColor()
-        collectionView.registerClass(HomeIconCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: cellIdentifier)
-        collectionView.registerClass(HomeIconHeaderCollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-        collectionView.registerClass(HomeIconFooterCollectionReusableView.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerIdentifier)
+        collectionView.registerClass(HomeIconCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.registerClass(HomeIconHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.registerClass(HomeIconFooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerIdentifier)
         
         self.view.addSubview(collectionView)
         

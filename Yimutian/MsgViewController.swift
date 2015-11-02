@@ -23,7 +23,7 @@ class MsgViewController: BaseViewController, UITableViewDataSource, UITableViewD
         tableView = UITableView(frame: SCREEN_BOUNDS)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellIdentifier)
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         view.addSubview(tableView)
         

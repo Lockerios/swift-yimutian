@@ -22,7 +22,7 @@ class MineViewController: BaseViewController, UITableViewDataSource, UITableView
         tableView = UITableView(frame: SCREEN_BOUNDS)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(SettingTableViewCell.classForCoder(), forCellReuseIdentifier: cellIdentifier)
+        tableView.registerClass(SettingTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         view.addSubview(tableView)
     }
