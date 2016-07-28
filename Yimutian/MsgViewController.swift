@@ -23,13 +23,13 @@ class MsgViewController: BaseViewController, UITableViewDataSource, UITableViewD
         tableView = UITableView(frame: SCREEN_BOUNDS)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         view.addSubview(tableView)
         
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: "p_refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(MsgViewController.p_refresh), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
     }
     
@@ -41,7 +41,7 @@ class MsgViewController: BaseViewController, UITableViewDataSource, UITableViewD
     //MARK: - Methods
     
     func p_refresh() {
-        self.performSelector(Selector("p_loadData"), withObject: nil, afterDelay: 1.5)
+        self.perform(#selector(MsgViewController.p_loadData), with: nil, afterDelay: 1.5)
     }
     
     func p_loadData() {
@@ -52,12 +52,12 @@ class MsgViewController: BaseViewController, UITableViewDataSource, UITableViewD
 
     //MARK: UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         cell?.textLabel!.text = "未读消息，点击查看"
         
         return cell!
@@ -65,11 +65,11 @@ class MsgViewController: BaseViewController, UITableViewDataSource, UITableViewD
     
     //MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        dLog("\(indexPath.row) selected")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dLog(message: "\((indexPath as NSIndexPath).row) selected")
     }
 }

@@ -24,23 +24,23 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBtn = UIBarButtonItem(title: "搜索", style: .Plain, target: self, action: "p_searchBtnCalled")
+        searchBtn = UIBarButtonItem(title: "搜索", style: .plain, target: self, action: #selector(HomeViewController.p_searchBtnCalled))
         self.navigationItem.rightBarButtonItem = searchBtn
         
         let layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: SCREEN_BOUNDS, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.whiteColor()
-        collectionView.registerClass(HomeIconCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        collectionView.registerClass(HomeIconHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-        collectionView.registerClass(HomeIconFooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerIdentifier)
+        collectionView.backgroundColor = UIColor.white()
+        collectionView.register(HomeIconCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(HomeIconHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.register(HomeIconFooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerIdentifier)
         
         self.view.addSubview(collectionView)
         
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: "p_refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(HomeViewController.p_refresh), for: UIControlEvents.valueChanged)
         collectionView.addSubview(refreshControl)
     }
     
@@ -53,7 +53,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     //MARK: - Methods
     
     override func p_initUI() {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white()
     }
     
     func p_searchBtnCalled() {
@@ -64,7 +64,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     }
     
     func p_refresh() {
-        self.performSelector(Selector("p_loadData"), withObject: nil, afterDelay: 1.5)
+        self.perform(#selector(HomeViewController.p_loadData), with: nil, afterDelay: 1.5)
     }
     
     func p_loadData() {
@@ -75,7 +75,7 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     //MARK: UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 9
@@ -90,44 +90,44 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! HomeIconCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! HomeIconCollectionViewCell
         
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
         case 0:
-            cell.backgroundColor = UIColor.blueColor()
+            cell.backgroundColor = UIColor.blue()
         case 1:
-            cell.backgroundColor = UIColor.grayColor()
+            cell.backgroundColor = UIColor.gray()
         case 2:
-            cell.backgroundColor = UIColor.purpleColor()
+            cell.backgroundColor = UIColor.purple()
         case 3:
-            cell.backgroundColor = UIColor.greenColor()
+            cell.backgroundColor = UIColor.green()
         default:
-            cell.backgroundColor = UIColor.blackColor()
+            cell.backgroundColor = UIColor.black()
         }
         
-        cell.iconLabel.text = "\(indexPath.section)"+"-"+"\(indexPath.row)"
+        cell.iconLabel.text = "\((indexPath as NSIndexPath).section)"+"-"+"\((indexPath as NSIndexPath).row)"
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
             if (headerView != nil) {
                 return headerView
             }
             
-            headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: headerIdentifier, forIndexPath: indexPath) as! HomeIconHeaderCollectionReusableView
+            headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! HomeIconHeaderCollectionReusableView
             headerView.scrollView.delegate = self
             
             return headerView
         case UICollectionElementKindSectionFooter:
-            let footer = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: footerIdentifier, forIndexPath: indexPath)
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: footerIdentifier, for: indexPath)
             return footer
         default:
             return UICollectionReusableView()
@@ -136,56 +136,56 @@ class HomeViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     //MARK: UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        dLog("\(indexPath.row) tapped")
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        dLog(message: "\((indexPath as NSIndexPath).row) tapped")
     }
     
     //MARK: UICollectionViewDelegateFlowLayout
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        switch indexPath.section {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch (indexPath as NSIndexPath).section {
         case 0:
-            return CGSizeMake(collectionView.bounds.size.width/3-20, 44)
+            return CGSize(width: collectionView.bounds.size.width/3-20, height: 44)
         case 1:
-            return CGSizeMake(collectionView.bounds.size.width/2-20, 44)
+            return CGSize(width: collectionView.bounds.size.width/2-20, height: 44)
         case 2:
-            return CGSizeMake(collectionView.bounds.size.width, 44)
+            return CGSize(width: collectionView.bounds.size.width, height: 44)
         case 3:
-            return CGSizeMake(collectionView.bounds.size.width/2-20, 100)
+            return CGSize(width: collectionView.bounds.size.width/2-20, height: 100)
         default:
-            return CGSizeMake(collectionView.bounds.size.width, 44)
+            return CGSize(width: collectionView.bounds.size.width, height: 44)
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         var headerHeight: CGFloat = 0
         if section==0 {
             headerHeight = 150
         }
         
-        return CGSizeMake(collectionView.bounds.size.width, headerHeight)
+        return CGSize(width: collectionView.bounds.size.width, height: headerHeight)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         var footerHeight: CGFloat = 0
         if section==3 {
             footerHeight = 150
         }
         
-        return CGSizeMake(collectionView.bounds.width, footerHeight)
+        return CGSize(width: collectionView.bounds.width, height: footerHeight)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 0, 10, 0)
     }
     
     //MARK: UIScrollViewDelegate
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if headerView != nil {
             headerView.pageControl.currentPage = Int(headerView.scrollView.contentOffset.x/headerView.scrollView.frame.size.width)
         }

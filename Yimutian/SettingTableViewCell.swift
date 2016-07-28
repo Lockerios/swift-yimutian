@@ -18,12 +18,12 @@ class SettingTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        iconImageView = UIImageView(frame: CGRectMake(0, 0, cellHeight, cellHeight))
+        iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cellHeight, height: cellHeight))
         
-        iconLabel = UILabel(frame: CGRectMake(cellHeight+20,0,200,cellHeight))
-        iconLabel.font = UIFont.systemFontOfSize(18.0)
-        iconLabel.textAlignment = .Left
-        iconLabel.textColor = UIColor.blackColor()
+        iconLabel = UILabel(frame: CGRect(x: cellHeight+20,y: 0,width: 200,height: cellHeight))
+        iconLabel.font = UIFont.systemFont(ofSize: 18.0)
+        iconLabel.textAlignment = .left
+        iconLabel.textColor = UIColor.black()
         
         contentView.addSubview(iconImageView)
         contentView.addSubview(iconLabel)
@@ -38,7 +38,7 @@ class SettingTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

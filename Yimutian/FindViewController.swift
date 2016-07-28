@@ -21,25 +21,25 @@ class FindViewController: BaseViewController, UIPickerViewDataSource, UIPickerVi
         
         segmentController = UISegmentedControl(items: ["找买家", "找卖家"])
         segmentController.selectedSegmentIndex = 0
-        segmentController.addTarget(self, action: Selector("p_segmentValueChanged"), forControlEvents: .ValueChanged)
+        segmentController.addTarget(self, action: #selector(FindViewController.p_segmentValueChanged), for: .valueChanged)
         
         self.navigationItem.titleView = segmentController
         
-        dataTypePicker = UIPickerView(frame: CGRectMake(0,SCREEN_HEIGHT-220-60,SCREEN_WIDTH,220))
+        dataTypePicker = UIPickerView(frame: CGRect(x: 0,y: SCREEN_HEIGHT-220-60,width: SCREEN_WIDTH,height: 220))
         dataTypePicker.dataSource = self
         dataTypePicker.delegate = self
-        dataTypePicker.hidden = true
-        dataTypePicker.layer.borderColor = UIColor.grayColor().CGColor
+        dataTypePicker.isHidden = true
+        dataTypePicker.layer.borderColor = UIColor.gray().cgColor
         dataTypePicker.layer.borderWidth = 1.0
         
         view.addSubview(dataTypePicker)
         
-        pickerBtn = UIButton(type: .Custom)
-        pickerBtn.frame = CGRectMake(0, 60, SCREEN_WIDTH, 44)
-        pickerBtn.setTitle("北京市", forState: .Normal)
-        pickerBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        pickerBtn.addTarget(self, action: Selector("p_showPicker"), forControlEvents: .TouchUpInside)
-        pickerBtn.layer.borderColor = UIColor.redColor().CGColor
+        pickerBtn = UIButton(type: .custom)
+        pickerBtn.frame = CGRect(x: 0, y: 60, width: SCREEN_WIDTH, height: 44)
+        pickerBtn.setTitle("北京市", for: UIControlState())
+        pickerBtn.setTitleColor(UIColor.black(), for: UIControlState())
+        pickerBtn.addTarget(self, action: #selector(FindViewController.p_showPicker), for: .touchUpInside)
+        pickerBtn.layer.borderColor = UIColor.red().cgColor
         pickerBtn.layer.borderWidth = 1.0
         
         view.addSubview(pickerBtn)
@@ -53,41 +53,41 @@ class FindViewController: BaseViewController, UIPickerViewDataSource, UIPickerVi
     //MARK: - Methods
     
     func p_segmentValueChanged() {
-        dLog("\(segmentController.selectedSegmentIndex)")
+        dLog(message: "\(segmentController.selectedSegmentIndex)")
     }
     
     func p_showPicker() {
-        dLog("show Picker")
-        dataTypePicker.hidden = !dataTypePicker.hidden
+        dLog(message: "show Picker")
+        dataTypePicker.isHidden = !dataTypePicker.isHidden
     }
     
     //MARK: - Actions
 
     //MARK: UIPickerViewDataSource
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 5
     }
     
     //MARK: UIPickerViewDelegate
     
-    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return SCREEN_WIDTH/3
     }
     
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 44
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(component)"+" "+"\(row)"
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        dLog("\(component)"+" "+"\(row)"+" selected")
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        dLog(message: "\(component)"+" "+"\(row)"+" selected")
     }
 }

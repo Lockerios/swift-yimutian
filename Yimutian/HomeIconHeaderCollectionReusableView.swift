@@ -12,10 +12,10 @@ class HomeIconHeaderCollectionReusableView: UICollectionReusableView {
     var scrollView: UIScrollView!
     var pageControl: UIPageControl!
     
-    func p_addPageView(pageCount: NSInteger) -> UIView {
+    func p_addPageView(_ pageCount: NSInteger) -> UIView {
         let pageView = UIView()
-        pageView.frame = CGRectMake(scrollView.frame.size.width*CGFloat(pageCount), 0, scrollView.frame.size.width, scrollView.frame.size.height)
-        pageView.backgroundColor = pageCount%2==0 ? UIColor.redColor() : UIColor.blueColor()
+        pageView.frame = CGRect(x: scrollView.frame.size.width*CGFloat(pageCount), y: 0, width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+        pageView.backgroundColor = pageCount%2==0 ? UIColor.red() : UIColor.blue()
         
         return pageView
     }
@@ -23,17 +23,17 @@ class HomeIconHeaderCollectionReusableView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        scrollView = UIScrollView(frame: CGRectMake(0,0,frame.size.width,frame.size.height))
-        scrollView.backgroundColor = UIColor.whiteColor()
-        scrollView.pagingEnabled = true
+        scrollView = UIScrollView(frame: CGRect(x: 0,y: 0,width: frame.size.width,height: frame.size.height))
+        scrollView.backgroundColor = UIColor.white()
+        scrollView.isPagingEnabled = true
         
         for num in 0...2 {
             scrollView.addSubview(p_addPageView(num))
         }
         
-        scrollView.contentSize = CGSizeMake(frame.size.width*3, frame.size.height)
+        scrollView.contentSize = CGSize(width: frame.size.width*3, height: frame.size.height)
         
-        pageControl = UIPageControl(frame: CGRectMake(0,frame.size.height-44,frame.size.width,44))
+        pageControl = UIPageControl(frame: CGRect(x: 0,y: frame.size.height-44,width: frame.size.width,height: 44))
         pageControl.numberOfPages = 3
         pageControl.currentPage = 0
         

@@ -19,28 +19,28 @@ class PublishViewController: BaseViewController {
         
         self.navigationItem.title = "发布消息"
         
-        sellBtn = UIButton(type: .Custom)
-        sellBtn.frame = CGRectMake(20, 80, SCREEN_WIDTH/2-60, SCREEN_WIDTH/2-60)
-        sellBtn.setTitle("我要卖", forState: .Normal)
-        sellBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        sellBtn.addTarget(self, action: Selector("p_sell"), forControlEvents: .TouchUpInside)
-        sellBtn.layer.borderColor = UIColor.grayColor().CGColor
+        sellBtn = UIButton(type: .custom)
+        sellBtn.frame = CGRect(x: 20, y: 80, width: SCREEN_WIDTH/2-60, height: SCREEN_WIDTH/2-60)
+        sellBtn.setTitle("我要卖", for: UIControlState())
+        sellBtn.setTitleColor(UIColor.black(), for: UIControlState())
+        sellBtn.addTarget(self, action: #selector(PublishViewController.p_sell), for: .touchUpInside)
+        sellBtn.layer.borderColor = UIColor.gray().cgColor
         sellBtn.layer.borderWidth = 1.0
         
-        buyBtn = UIButton(type: .Custom)
-        buyBtn.frame = CGRectMake(SCREEN_WIDTH/2+40, 80, SCREEN_WIDTH/2-60, SCREEN_WIDTH/2-60)
-        buyBtn.setTitle("我要买", forState: .Normal)
-        buyBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        buyBtn.addTarget(self, action: Selector("p_buy"), forControlEvents: .TouchUpInside)
-        buyBtn.layer.borderColor = UIColor.grayColor().CGColor
+        buyBtn = UIButton(type: .custom)
+        buyBtn.frame = CGRect(x: SCREEN_WIDTH/2+40, y: 80, width: SCREEN_WIDTH/2-60, height: SCREEN_WIDTH/2-60)
+        buyBtn.setTitle("我要买", for: UIControlState())
+        buyBtn.setTitleColor(UIColor.black(), for: UIControlState())
+        buyBtn.addTarget(self, action: #selector(PublishViewController.p_buy), for: .touchUpInside)
+        buyBtn.layer.borderColor = UIColor.gray().cgColor
         buyBtn.layer.borderWidth = 1.0
         
-        infoBtn = UIButton(type: .Custom)
-        infoBtn.frame = CGRectMake(20, SCREEN_WIDTH/2+80, SCREEN_WIDTH-40, SCREEN_WIDTH-40)
-        infoBtn.setTitle("发布商机", forState: .Normal)
-        infoBtn.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        infoBtn.addTarget(self, action: Selector("p_publishInfo"), forControlEvents: .TouchUpInside)
-        infoBtn.layer.borderColor = UIColor.grayColor().CGColor
+        infoBtn = UIButton(type: .custom)
+        infoBtn.frame = CGRect(x: 20, y: SCREEN_WIDTH/2+80, width: SCREEN_WIDTH-40, height: SCREEN_WIDTH-40)
+        infoBtn.setTitle("发布商机", for: UIControlState())
+        infoBtn.setTitleColor(UIColor.black(), for: UIControlState())
+        infoBtn.addTarget(self, action: #selector(PublishViewController.p_publishInfo), for: .touchUpInside)
+        infoBtn.layer.borderColor = UIColor.gray().cgColor
         infoBtn.layer.borderWidth = 1.0
         
         view.addSubview(sellBtn)

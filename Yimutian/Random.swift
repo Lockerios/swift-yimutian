@@ -8,7 +8,7 @@
 
 import Foundation
 
-func randomInRange(range: Range<Int>) -> Int {
-    let count = UInt32(range.endIndex - range.startIndex)
-    return  Int(arc4random_uniform(count)) + range.startIndex
+func randomInRange(_ range: Range<Int>) -> Int {
+    let count = UInt32(range.upperBound - range.lowerBound)
+    return  Int(arc4random_uniform(count)) + range.lowerBound
 }

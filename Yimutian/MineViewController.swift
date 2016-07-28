@@ -22,7 +22,7 @@ class MineViewController: BaseViewController, UITableViewDataSource, UITableView
         tableView = UITableView(frame: SCREEN_BOUNDS)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(SettingTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         view.addSubview(tableView)
     }
@@ -41,12 +41,12 @@ class MineViewController: BaseViewController, UITableViewDataSource, UITableView
     
     //MARK: UITableViewDataSource
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! SettingTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! SettingTableViewCell
 
         cell.iconLabel.text = "设置选项"
         cell.iconImageView.image = UIImage(named: "1.jpg")
@@ -56,11 +56,11 @@ class MineViewController: BaseViewController, UITableViewDataSource, UITableView
     
     //MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeight
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        dLog("\(indexPath.row) selected")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dLog(message: "\((indexPath as NSIndexPath).row) selected")
     }
 }

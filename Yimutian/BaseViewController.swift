@@ -11,7 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
 
     func p_initUI() {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white()
     }
     
     //MARK: - Lifecycle

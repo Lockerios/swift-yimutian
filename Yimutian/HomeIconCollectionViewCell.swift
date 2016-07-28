@@ -14,10 +14,10 @@ class HomeIconCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        iconLabel = UILabel(frame: CGRectMake(0,0,frame.size.width,frame.size.height))
-        iconLabel.textAlignment = .Left
-        iconLabel.textColor = UIColor.whiteColor()
-        iconLabel.font = UIFont.systemFontOfSize(14)
+        iconLabel = UILabel(frame: CGRect(x: 0,y: 0,width: frame.size.width,height: frame.size.height))
+        iconLabel.textAlignment = .left
+        iconLabel.textColor = UIColor.white()
+        iconLabel.font = UIFont.systemFont(ofSize: 14)
         
         contentView.addSubview(iconLabel)
     }
